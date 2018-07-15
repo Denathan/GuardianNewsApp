@@ -5,12 +5,14 @@ public class NewsDto {
     private String sectionName;
     private String author;
     private String webPublicationDate;
+    private String url;
 
-    public NewsDto(String title, String sectionName, String author, String webPublicationDate) {
+    public NewsDto(String title, String sectionName, String author, String webPublicationDate, String url) {
         this.title = title;
         this.sectionName = sectionName;
         this.author = author;
         this.webPublicationDate = webPublicationDate;
+        this.url = url;
     }
 
     public String getTitle() {
@@ -33,6 +35,10 @@ public class NewsDto {
         this.title = title;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
     public void setSectionName(String sectionName) {
         this.sectionName = sectionName;
     }
@@ -43,5 +49,9 @@ public class NewsDto {
 
     public void setWebPublicationDate(String webPublicationDate) {
         this.webPublicationDate = webPublicationDate;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

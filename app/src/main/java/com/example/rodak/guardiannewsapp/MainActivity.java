@@ -2,14 +2,18 @@ package com.example.rodak.guardiannewsapp;
 
 import android.app.LoaderManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.Loader;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         NetworkInfo networkInfo = connectionManager.getActiveNetworkInfo();
 
         ListView newsListView = (ListView) findViewById(R.id.list);
+
         newsAdapter = new NewsAdapter(MainActivity.this, 0, news);
         newsListView.setAdapter(newsAdapter);
         emptyListTextView = (TextView) findViewById(R.id.empty_list);
@@ -66,6 +71,16 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         } else {
             emptyListTextView.setText(R.string.empty_list);
         }
+        ListView newsListView = (ListView) findViewById(R.id.list);
+        newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                NewsDto currentNews = savedNewsList.get(position);
+                Uri newsUri = Uri.parse(currentNews.getUrl());
+                Intent openWebsite = new Intent(Intent.ACTION_VIEW, newsUri);
+                startActivity(openWebsite);
+            }
+        });
     }
 
     @Override

@@ -133,7 +133,12 @@ public class HttpRequest {
                     webPublicationDate = results.getString("webPublicationDate");
                 }
 
-                NewsDto actualNews = new NewsDto(title, sectionName, author, webPublicationDate);
+                String url = "";
+                if (results.has("webUrl")) {
+                    url = results.getString("webUrl");
+                }
+
+                NewsDto actualNews = new NewsDto(title, sectionName, author, webPublicationDate, url);
                 newsList.add(actualNews);
             }
 
