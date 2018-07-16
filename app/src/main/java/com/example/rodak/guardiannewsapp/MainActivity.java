@@ -4,16 +4,19 @@ import android.app.LoaderManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +24,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<NewsDto>> {
 
     private List<NewsDto> news = new ArrayList<>();
-    List<NewsDto> savedNewsList = new ArrayList<>();
+    private List<NewsDto> savedNewsList = new ArrayList<>();
     private NewsAdapter newsAdapter;
     private TextView emptyListTextView;
     private static final int NEWS_LOADER_ID = 1;
@@ -51,11 +54,22 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public Loader<List<NewsDto>> onCreateLoader(int id, Bundle args) {
         String REQUEST_URL = "http://content.guardianapis.com/search";
+
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String orderBy = sharedPrefs.getString(
+                getString(R.string.settings_order_by_key),
+                getString(R.string.settings_order_by_default));
+
+        String section = sharedPrefs.getString(
+                getString(R.string.settings_section_by_key),
+                getString(R.string.settings_section_by_default));
+
         Uri baseUri = Uri.parse(REQUEST_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
+        uriBuilder.appendQueryParameter("order-by", orderBy);
         uriBuilder.appendQueryParameter("show-fields", "byline");
         uriBuilder.appendQueryParameter("pageSize", "50");
-        uriBuilder.appendQueryParameter("q", "Poland");
+        uriBuilder.appendQueryParameter("q", section);
         uriBuilder.appendQueryParameter("api-key", "5336517f-3d76-40df-a72c-015f57961863");
         return new DataLoader(this, uriBuilder.toString());
     }
@@ -86,5 +100,22 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoaderReset(Loader<List<NewsDto>> loader) {
         newsAdapter.setNewsInfoList(null);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            startActivity(settingsIntent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

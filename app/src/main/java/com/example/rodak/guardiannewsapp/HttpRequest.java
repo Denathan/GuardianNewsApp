@@ -18,11 +18,12 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HttpRequest {
+final public class HttpRequest {
 
     public static final String LOG_TAG = HttpRequest.class.getSimpleName();
 
     private HttpRequest() {
+        throw new AssertionError("No instances for you!");
     }
 
     public static List<NewsDto> fetchNewsData(String endpoint) {

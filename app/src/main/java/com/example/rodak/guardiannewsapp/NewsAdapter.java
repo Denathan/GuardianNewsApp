@@ -20,22 +20,21 @@ public class NewsAdapter extends ArrayAdapter<NewsDto> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View newsItemView = convertView;
         NewsDto newsRecord = getItem(position);
-        if (newsItemView == null) {
-            newsItemView = LayoutInflater.from(getContext()).inflate(
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(
                     R.layout.list_news, parent, false);
         }
 
-        TextView titleTextView = (TextView) newsItemView.findViewById(R.id.news_title);
+        TextView titleTextView = (TextView) convertView.findViewById(R.id.news_title);
         titleTextView.setText(newsRecord.getTitle());
-        TextView descrbTextView = (TextView) newsItemView.findViewById(R.id.section_name);
+        TextView descrbTextView = (TextView) convertView.findViewById(R.id.section_name);
         descrbTextView.setText(newsRecord.getSectionName());
-        TextView openingTextView = (TextView) newsItemView.findViewById(R.id.author_name);
+        TextView openingTextView = (TextView) convertView.findViewById(R.id.author_name);
         openingTextView.setText(newsRecord.getAuthor());
-        TextView ratingTextView = (TextView) newsItemView.findViewById(R.id.publication_date);
+        TextView ratingTextView = (TextView) convertView.findViewById(R.id.publication_date);
         ratingTextView.setText(newsRecord.getWebPublicationDate());
-        return newsItemView;
+        return convertView;
     }
 
     public void setNewsInfoList(List<NewsDto> newsList) {

@@ -2,4 +2,33 @@
     <string name="app_name">Guardian News App</string>
     <string name="no_internet_connection">No internet connection.</string>
     <string name="empty_list">Currently there are no news prepared for you. Come back later and checkout for new stories..</string>
+    <string name="settings_menu_item">Settings</string>
+    <string name="settings_title">Guardian News App Settings</string>
+    <string name="hello_blank_fragment">There\'s nothing</string>
+
+    <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
+    <string name="settings_order_by_label">Order By</string>
+    <string name="settings_order_by_key" translatable="false">order-by</string>
+    <string name="settings_order_by_default" translatable="false">newest</string>
+
+    <!-- Labels for order-by options [CHAR LIMIT=20] -->
+    <string name="settings_order_by_newest_label">Newest</string>
+    <string name="settings_order_by_newest_value" translatable="false">newest</string>
+    <string name="settings_order_by_oldest_label">Oldest</string>
+    <string name="settings_order_by_oldest_value" translatable="false">oldest</string>
+
+    <!-- Strings For News Country Preference [CHAR LIMIT=30] -->
+    <string name="settings_country_by_label">News from</string>
+    <string name="settings_section_by_key" translatable="false">q</string>
+    <string name="settings_section_by_default" translatable="false">business</string>
+
+    <!-- Labels for News Country options [CHAR LIMIT=20] -->
+    <string name="settings_section_by_business_label">Business</string>
+    <string name="settings_section_by_business_value" translatable="false">business</string>
+    <string name="settings_section_by_sport_label">Sport</string>
+    <string name="settings_section_by_sport_value" translatable="false">sport</string>
+    <string name="settings_section_by_culture_label">Culture</string>
+    <string name="settings_section_by_culture_value" translatable="false">culture</string>
+    <string name="settings_section_by_lifeandlifestyle_label">Life and lifestyle</string>
+    <string name="settings_section_by_lifeandlifestyle_value" translatable="false">lifeandstyle</string>
 </resources>
