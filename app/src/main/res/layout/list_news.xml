@@ -15,7 +15,7 @@
             android:id="@+id/news_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Title sample"
+            android:text="@string/title_sample"
             android:textColor="@color/primaryText"
             android:textSize="@dimen/sp24" />
 
@@ -23,7 +23,7 @@
             android:id="@+id/section_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Section sample"
+            android:text="@string/section_sample"
             android:textColor="@color/secondaryText"
             android:textSize="@dimen/sp14" />
 
@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:text="Author sample"
+            android:text="@string/author_sample"
             android:textColor="@color/thirdText"
             android:textSize="@dimen/sp10" />
 
@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:text="Date sample"
+            android:text="@string/date_sample"
             android:textColor="@color/thirdText"
             android:textSize="@dimen/sp10" />
     </LinearLayout>

@@ -38,20 +38,4 @@ public class NewsDto {
     public String getUrl() {
         return url;
     }
-
-    public void setSectionName(String sectionName) {
-        this.sectionName = sectionName;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public void setWebPublicationDate(String webPublicationDate) {
-        this.webPublicationDate = webPublicationDate;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
 }
