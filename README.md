@@ -17,4 +17,5 @@
 -   Launch a Settings Activity from a menu in the Main Activity
 -   Use Uri.Builder class to add query parameters to the URL
 -   Update and display the Preference Summary
+
 ![GuardianNewsApp](https://i.imgur.com/hnLAeTn.jpg)
